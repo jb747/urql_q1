@@ -15,7 +15,7 @@
 	let dataArray: never[] = [];
 
 	/**
-	 * 
+	 * filterData filters the qstoreEdges
 	 */
 	const filterData = (_: any) => {
 		let data = qstoreEdges();
