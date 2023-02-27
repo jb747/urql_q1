@@ -23,6 +23,10 @@
 		`,
 		variables: {}
 	});
+
+	const qstoreEdges = () => {
+		return $qstore.data.allStarships.edges;
+	};
 </script>
 
-<Table {qstore}/>
+<Table {qstore} {qstoreEdges} />

@@ -1,13 +1,25 @@
 <script lang="ts">
 	import type { OperationResultStore, Pausable } from '@urql/svelte/dist/types/common';
 
+	/**
+	 * qstore is an Urql data store containing graphql query results
+	 */
 	export let qstore: OperationResultStore<any, {}> & Pausable;
+
+	/**
+	 * qstoreEdges is a generic function which knows how to retrieve the
+	 * query-specific edges from the data store
+	 */
+	export let qstoreEdges = () => [];
 
 	let dataArray: never[] = [];
 
-	const massageData = (node: any, data: any) => {
+	/**
+	 * 
+	 */
+	const filterData = (_: any) => {
+		let data = qstoreEdges();
 		dataArray = data.filter((d: any) => {
-			console.log('data: ', d);
 			return d.cursor == 'YXJyYXljb25uZWN0aW9uOjEz';
 		});
 	};
@@ -20,7 +32,7 @@
 		<p>Error: {$qstore.error.message}</p>
 	{:else}
 		<div>
-			<table use:massageData={$qstore.data.allStarships.edges}>
+			<table use:filterData>
 				<thead class="header">
 					<tr>
 						<th>Name</th>
