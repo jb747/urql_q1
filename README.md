@@ -1,3 +1,2 @@
 # urql generic table
-
-Simple example to show current state of urql table with simple data filtration.
+Simple example which implements a generic table component. A callback into the parent is used to retrieve the query-specific edges.
